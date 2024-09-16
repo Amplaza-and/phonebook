@@ -1,5 +1,4 @@
 const express = require('express')
-const morgan = require('morgan')
 const app = express()
 app.use(express.json())
 const cors = require('cors')
@@ -27,17 +26,6 @@ let persons = [
     "number": "39-23-6423122"
   }
 ]
-morgan('tiny')
-app.use(morgan((tokens, req, res) => {
-  return [
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res),
-    tokens.res(req, res, 'content-length'), '-',
-    tokens['response-time'](req, res), 'ms',
-    JSON.stringify(req.body)
-  ].join(' ')
-}))
 
 app.get('/info', (request, response) => {
   const now = new Date()
