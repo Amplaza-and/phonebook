@@ -72,8 +72,6 @@ app.get('/api/persons/:id', (request, response) => {
       number: body.number,
       id: generateId(),
     }
-    morgan.token('body', function (request) { return request.body })
-    app.use(morgan(':body'))
     persons = persons.concat(person)
     response.json(person)
   })
